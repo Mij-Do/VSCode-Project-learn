@@ -13,11 +13,11 @@ export const FileTree: IFile = {
                     isFolder: true,
                     children: [
                         {
-                            name: "react.tsx",
+                            name: "react.js",
                             isFolder: false,
                         },
                         {
-                            name: "alert.jsx",
+                            name: "alert.js",
                             isFolder: false,
                         },
                     ]
@@ -29,22 +29,39 @@ export const FileTree: IFile = {
             isFolder: true,
             children: [
                 {
-                    name: "index.html",
-                    isFolder: false,
-                },
+                    name: "svg",
+                    isFolder: true,
+                }
+            ]
+        },
+        {
+            name: "src",
+            isFolder: true,
+            children: [
                 {
-                    name: "index.css",
-                    isFolder: false,
-                },
-                {
-                    name: "index.js",
-                    isFolder: false,
-                },
-                {
-                    name: "index.ts",
-                    isFolder: false,
-                },
+                    name: "components",
+                    isFolder: true,
+                    children: [
+                        {
+                            name: "index.html",
+                            isFolder: false,
+                        },
+                        {
+                            name: "index.css",
+                            isFolder: false,
+                        },
+                        {
+                            name: "index.js",
+                            isFolder: false,
+                        },
+                        {
+                            name: "index.ts",
+                            isFolder: false,
+                        },
+                    ]
+                }
             ]
         }
     ]
 }
+

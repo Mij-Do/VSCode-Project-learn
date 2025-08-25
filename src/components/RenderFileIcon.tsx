@@ -1,19 +1,29 @@
+import { extensionIconPath } from "../constant";
 import IconImg from "./IconImg";
 import FileIcon from "./SVG/File";
 
 interface IProps {
     filename: string;
+    isFolder?: boolean;
+    isOpen?: boolean;
 }
 
-const RenderFileIcon = ({filename}: IProps) => {
+const RenderFileIcon = ({filename, isFolder, isOpen}: IProps) => {
     const extension = filename.split('.').pop();
 
-    if (extension === 'tsx') return <IconImg src="/icons/react_ts.svg"/>
-    if (extension === 'html') return <IconImg src="/icons/html.svg"/>
-    if (extension === 'jsx') return <IconImg src="/icons/react.svg"/>
-    if (extension === 'js') return <IconImg src="/icons/javascript.svg"/>
-    if (extension === 'ts') return <IconImg src="/icons/typescript.svg"/>
-    if (extension === 'css') return <IconImg src="/icons/css.svg"/>
+    if (extension && Object.prototype.hasOwnProperty.call(extensionIconPath, extension)) {
+        const iconPath = isFolder ?
+        isOpen ?
+        `${extensionIconPath[extension]}-open.svg` :
+        `${extensionIconPath[extension]}.svg` :
+        `${extensionIconPath[extension]}.svg`;
+        
+        return <IconImg src={iconPath}/>
+    }
+
+
+    if (isFolder && isOpen) return <IconImg src="/icons/folder-default-open.svg"/>
+    if (isFolder && !isOpen) return <IconImg src="/icons/folder-default.svg"/>
 
     return <FileIcon /> 
 }

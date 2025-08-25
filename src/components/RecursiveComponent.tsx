@@ -3,7 +3,6 @@ import type { IFile } from "../interfaces";
 import RightArrowIcon from "./SVG/Right";
 import BottomArrowIcon from "./SVG/Bottom";
 import RenderFileIcon from "./RenderFileIcon";
-import FolderIcon from "./SVG/Folder";
 
 interface IProps {
     fileTree: IFile;
@@ -20,13 +19,12 @@ const RecursiveComponent = ({fileTree}: IProps) => {
                 {fileTree.isFolder ? 
                     <div onClick={toggle} className="flex items-center">
                         {isOpen ? <BottomArrowIcon /> : <RightArrowIcon />}
-                        {/* <RenderFileIcon filename={fileTree.name}/> */}
-                        <FolderIcon />
+                        <RenderFileIcon filename={fileTree.name} isFolder={fileTree.isFolder} isOpen={isOpen}/>
                         <span>{fileTree.name}</span>
                     </div>
                 : 
                     <div className="flex items-center ml-2">
-                        <RenderFileIcon filename={fileTree.name}/>
+                        <RenderFileIcon filename={fileTree.name} />
                         <span>{fileTree.name}</span>
                     </div>
                 }
