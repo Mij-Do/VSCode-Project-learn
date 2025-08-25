@@ -13,9 +13,13 @@ export const FileTree: IFile = {
                     isFolder: true,
                     children: [
                         {
-                            name: "react.js",
+                            name: "react.tsx",
                             isFolder: false,
-                        }
+                        },
+                        {
+                            name: "alert.jsx",
+                            isFolder: false,
+                        },
                     ]
                 }
             ]
@@ -27,7 +31,19 @@ export const FileTree: IFile = {
                 {
                     name: "index.html",
                     isFolder: false,
-                }
+                },
+                {
+                    name: "index.css",
+                    isFolder: false,
+                },
+                {
+                    name: "index.js",
+                    isFolder: false,
+                },
+                {
+                    name: "index.ts",
+                    isFolder: false,
+                },
             ]
         }
     ]
