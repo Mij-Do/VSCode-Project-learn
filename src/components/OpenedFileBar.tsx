@@ -9,7 +9,9 @@ const OpenedFileBar = () => {
             <div className="flex border-b border-[#ffffff54]">
                 {openedFile.map(file => <OpenedFileBarTap key={file.id} file={file}/>)}
             </div>
-            {clickedFile.fileContent}
+            <div className="mt-2 mx-2">
+                {clickedFile.fileContent}
+            </div>
         </div>
     )
 }

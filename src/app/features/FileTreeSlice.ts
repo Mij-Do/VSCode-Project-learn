@@ -7,18 +7,18 @@ import type { IFile } from '../../interfaces';
 interface IClickedFile {
     fileName: string;
     fileContent: string | undefined;
+    activeTapId: string | null;
 }
 
 interface IInitialState {
     openedFile: IFile[];
     clickedFile: IClickedFile;
-    activeTapId: string | null;
 }
 
 const initialState: IInitialState = {
-    activeTapId: null,
     openedFile: [],
     clickedFile: {
+        activeTapId: null,
         fileName: '',
         fileContent: '',
     }
@@ -32,16 +32,12 @@ const FileTreeSlice = createSlice({
             state.openedFile = action.payload;
         },
         setClickedFile: (state, action: PayloadAction<IClickedFile>) => {
-            state.clickedFile.fileName = action.payload.fileName;
-            state.clickedFile.fileContent = action.payload.fileContent;
+            state.clickedFile = action.payload;
         },
-        setActiveTapId: (state, action: PayloadAction<string>) => {
-            state.activeTapId = action.payload;
-        }
     },
 })
 
-export const { setOpenedFile, setClickedFile, setActiveTapId } = FileTreeSlice.actions;
+export const { setOpenedFile, setClickedFile } = FileTreeSlice.actions;
 
 export const selectFileTree = (state: RootState) => state;
 

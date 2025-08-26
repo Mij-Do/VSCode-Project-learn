@@ -4,7 +4,7 @@ import RightArrowIcon from "./SVG/Right";
 import BottomArrowIcon from "./SVG/Bottom";
 import RenderFileIcon from "./RenderFileIcon";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveTapId, setOpenedFile } from "../app/features/FileTreeSlice";
+import { setClickedFile, setOpenedFile } from "../app/features/FileTreeSlice";
 import type { RootState } from "../app/store";
 import { doesFileObjExists } from "../utils";
 
@@ -21,9 +21,9 @@ const RecursiveComponent = ({fileTree}: IProps) => {
     const toggle = () => setIsOpen(prev => !prev);
     const onFileClicked = () => {
         const exists = doesFileObjExists(openedFile, fileTree.id);
+        dispatch(setClickedFile({fileName: fileTree.name, fileContent: fileTree.content, activeTapId: fileTree.id}));
         if (exists) return;
         dispatch(setOpenedFile([...openedFile, fileTree]));
-        dispatch(setActiveTapId(fileTree.id));
     }
     return (
         <div className="mb-2 ml-2 cursor-pointer">
