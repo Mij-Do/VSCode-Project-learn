@@ -20,11 +20,13 @@ export const FileTree: IFile = {
                             id: uuidv4(),
                             name: "react.js",
                             isFolder: false,
+                            content: `let Hello = document.getElementById("hello");`
                         },
                         {
                             id: uuidv4(),
                             name: "alert.js",
                             isFolder: false,
+                            content: `let World = document.getElementById("world");`
                         },
                     ]
                 }
@@ -56,7 +58,7 @@ export const FileTree: IFile = {
                             id: uuidv4(),
                             name: "index.html",
                             isFolder: false,
-                            content: "Hello, World => From HTML File"
+                            content: `<div> <P> Hello, World </p> </div>`
                         },
                         {
                             id: uuidv4(),
@@ -68,13 +70,13 @@ export const FileTree: IFile = {
                             id: uuidv4(),
                             name: "index.js",
                             isFolder: false,
-                            content: "Hello, World => From JS File"
+                            content: `const Hello = {greeting: "Hello, World .. From JS"}`
                         },
                         {
                             id: uuidv4(),
                             name: "index.ts",
                             isFolder: false,
-                            content: "Hello, World => From TS File"
+                            content: `const Hello = {greeting: "Hello, World .. From TS"}`
                         },
                     ]
                 }
