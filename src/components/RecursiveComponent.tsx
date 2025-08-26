@@ -16,7 +16,7 @@ const RecursiveComponent = ({fileTree}: IProps) => {
     // states
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const dispatch = useDispatch();
-    const {openedFile} = useSelector((state: RootState) => state.filetree)
+    const {openedFile} = useSelector((state: RootState) => state.filetree);
     // handlers
     const toggle = () => setIsOpen(prev => !prev);
     const onFileClicked = () => {
