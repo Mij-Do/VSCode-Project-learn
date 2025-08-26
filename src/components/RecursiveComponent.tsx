@@ -6,6 +6,7 @@ import RenderFileIcon from "./RenderFileIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenedFile } from "../app/features/FileTreeSlice";
 import type { RootState } from "../app/store";
+import { doesFileObjExists } from "../utils";
 
 interface IProps {
     fileTree: IFile;
@@ -18,6 +19,11 @@ const RecursiveComponent = ({fileTree}: IProps) => {
     const {openedFile} = useSelector((state: RootState) => state.filetree)
     // handlers
     const toggle = () => setIsOpen(prev => !prev);
+    const onFileClicked = () => {
+        const exists = doesFileObjExists(openedFile, fileTree.id);
+        if (exists) return;
+        dispatch(setOpenedFile([...openedFile, fileTree]));
+    }
     return (
         <div className="mb-2 ml-2 cursor-pointer">
             <div className="flex items-center mb-1">
@@ -28,7 +34,7 @@ const RecursiveComponent = ({fileTree}: IProps) => {
                         <span>{fileTree.name}</span>
                     </div>
                 : 
-                    <div className="flex items-center ml-2" onClick={() => dispatch(setOpenedFile([...openedFile, fileTree]))}>
+                    <div className="flex items-center ml-2" onClick={onFileClicked}>
                         <RenderFileIcon filename={fileTree.name} />
                         <span>{fileTree.name}</span>
                     </div>
