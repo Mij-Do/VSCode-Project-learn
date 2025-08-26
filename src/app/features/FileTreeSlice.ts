@@ -12,9 +12,11 @@ interface IClickedFile {
 interface IInitialState {
     openedFile: IFile[];
     clickedFile: IClickedFile;
+    activeTapId: string | null;
 }
 
 const initialState: IInitialState = {
+    activeTapId: null,
     openedFile: [],
     clickedFile: {
         fileName: '',
@@ -32,11 +34,14 @@ const FileTreeSlice = createSlice({
         setClickedFile: (state, action: PayloadAction<IClickedFile>) => {
             state.clickedFile.fileName = action.payload.fileName;
             state.clickedFile.fileContent = action.payload.fileContent;
+        },
+        setActiveTapId: (state, action: PayloadAction<string>) => {
+            state.activeTapId = action.payload;
         }
     },
 })
 
-export const { setOpenedFile, setClickedFile } = FileTreeSlice.actions;
+export const { setOpenedFile, setClickedFile, setActiveTapId } = FileTreeSlice.actions;
 
 export const selectFileTree = (state: RootState) => state;
 

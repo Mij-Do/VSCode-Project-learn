@@ -1,23 +1,26 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import type { IFile } from '../interfaces';
 import RenderFileIcon from './RenderFileIcon';
 import CloseIcon from './SVG/CloseIcon';
-import { setClickedFile } from '../app/features/FileTreeSlice';
+import { setActiveTapId, setClickedFile } from '../app/features/FileTreeSlice';
+import type { RootState } from '../app/store';
 
 interface IProps {
     file: IFile;
 }
 
 const OpenedFileBarTap = ({file}: IProps) => {
-    const {name, content} = file;
+    const {activeTapId} = useSelector((state: RootState) => state.filetree);
+    const {name, content, id} = file;
     const dispatch = useDispatch();
     // handlers
     const onClick = () => {
-        dispatch(setClickedFile({fileName: name, fileContent: content}))
+        dispatch(setClickedFile({fileName: name, fileContent: content}));
+        dispatch(setActiveTapId(file.id));
     }
 
     return (
-        <div className='cursor-pointer flex space-x-1 items-center border border-gray-700 p-2' onClick={onClick}>
+        <div className={`${activeTapId === id ? 'border-[#cf6ccf]' : 'border-t-transparent'} cursor-pointer flex space-x-1 items-center border-t-2 p-2`} onClick={onClick}>
             <RenderFileIcon filename={file.name}/>
             <span>{file.name}</span>
             <CloseIcon />
