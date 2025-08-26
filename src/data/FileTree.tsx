@@ -56,21 +56,25 @@ export const FileTree: IFile = {
                             id: uuidv4(),
                             name: "index.html",
                             isFolder: false,
+                            content: "Hello, World => From HTML File"
                         },
                         {
                             id: uuidv4(),
                             name: "index.css",
                             isFolder: false,
+                            content: "Hello, World => From CSS File"
                         },
                         {
                             id: uuidv4(),
                             name: "index.js",
                             isFolder: false,
+                            content: "Hello, World => From JS File"
                         },
                         {
                             id: uuidv4(),
                             name: "index.ts",
                             isFolder: false,
+                            content: "Hello, World => From TS File"
                         },
                     ]
                 }

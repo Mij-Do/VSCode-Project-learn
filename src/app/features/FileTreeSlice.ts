@@ -6,7 +6,7 @@ import type { IFile } from '../../interfaces';
 
 interface IClickedFile {
     fileName: string;
-    fileContent: string;
+    fileContent: string | undefined;
 }
 
 interface IInitialState {
@@ -28,11 +28,15 @@ const FileTreeSlice = createSlice({
     reducers: {
         setOpenedFile: (state, action: PayloadAction<IFile[]>) => {
             state.openedFile = action.payload;
+        },
+        setClickedFile: (state, action: PayloadAction<IClickedFile>) => {
+            state.clickedFile.fileName = action.payload.fileName;
+            state.clickedFile.fileContent = action.payload.fileContent;
         }
     },
 })
 
-export const { setOpenedFile } = FileTreeSlice.actions;
+export const { setOpenedFile, setClickedFile } = FileTreeSlice.actions;
 
 export const selectFileTree = (state: RootState) => state;
 
