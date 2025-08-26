@@ -26,12 +26,14 @@ const FileTreeSlice = createSlice({
     name: 'filetree',
     initialState,
     reducers: {
-        
+        setOpenedFile: (state, action: PayloadAction<IFile[]>) => {
+            state.openedFile = action.payload;
+        }
     },
 })
 
-export const { } = FileTreeSlice.actions;
+export const { setOpenedFile } = FileTreeSlice.actions;
 
-// export const selectCount = (state: RootState) => state.counter.value
+export const selectFileTree = (state: RootState) => state;
 
 export default FileTreeSlice.reducer;
