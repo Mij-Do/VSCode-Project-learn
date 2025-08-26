@@ -20,8 +20,13 @@ const OpenedFileBarTap = ({file}: IProps) => {
     const onRemove = (id: string) => {
         const filtered = openedFile.filter(file => file.id !== id);
         const lastTap = filtered[filtered.length -1];
+        if (!lastTap) {
+            dispatch(setOpenedFile([]));
+            dispatch(setClickedFile({activeTapId: null, fileContent: "", fileName: ""}));
+            return;
+        }
         dispatch(setOpenedFile(filtered));
-        dispatch(setClickedFile({activeTapId: lastTap.id, fileContent: lastTap.content, fileName: lastTap.name}))
+        dispatch(setClickedFile({activeTapId: lastTap.id, fileContent: lastTap.content, fileName: lastTap.name}));
     }
 
     return (
