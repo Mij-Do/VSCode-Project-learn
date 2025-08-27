@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { IFile } from '../interfaces';
 import RenderFileIcon from './RenderFileIcon';
 import CloseIcon from './SVG/CloseIcon';
-import { setClickedFile, setOpenedFile } from '../app/features/FileTreeSlice';
+import { setClickedFile, setOpenedFile, setActionToClose } from '../app/features/FileTreeSlice';
 import type { RootState } from '../app/store';
 
 interface IProps {
@@ -33,6 +33,10 @@ const OpenedFileBarTap = ({file}: IProps) => {
     return (
         <div className={`${clickedFile.activeTapId === id ? 'border-[#cf6ccf]' : 'border-t-transparent'} cursor-pointer flex space-x-1 items-center border-t-2 p-2`}
             onClick={onClick}
+            onContextMenu={e => {
+                e.preventDefault();
+                dispatch(setActionToClose(file.id))
+            }}
             >
             <RenderFileIcon filename={file.name}/>
             <span>{file.name}</span>
